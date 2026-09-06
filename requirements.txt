@@ -3,3 +3,4 @@ mysql-connector-python
 pytesseract
 Pillow
 gunicorn
+nltk
