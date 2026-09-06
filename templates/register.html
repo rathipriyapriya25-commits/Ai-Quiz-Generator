@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - AI Quiz Generator</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 340px; }
+        h2 { text-align: center; color: #333; margin-bottom: 20px; }
+        input, select, button { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { background-color: #28a745; color: white; border: none; font-weight: bold; cursor: pointer; }
+        button:hover { background-color: #218838; }
+        p { text-align: center; font-size: 14px; }
+        a { color: #007bff; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Register</h2>
+        <form action="/register" method="POST">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <select name="role" required>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+            </select>
+            <button type="submit">Create Account</button>
+        </form>
+        <p>Already registered? <a href="/login">Login here</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; background: #fafafa; }
+        .score-card { background: #fff; padding: 20px; border: 1px solid #ccc; text-align: center; border-radius: 5px; margin-bottom: 20px; }
+        .review-box { background: #fff; padding: 15px; border: 1px solid #ddd; margin-bottom: 10px; border-radius: 4px; }
+        .correct { color: green; font-weight: bold; }
+        .incorrect { color: red; font-weight: bold; }
+        a { text-decoration: none; color: #007bff; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="score-card">
+        <h2>Quiz Completed!</h2>
+        {% if quiz %}
+            <h3>{{ quiz['title'] }}</h3>
+        {% endif %}
+        <h3>Your Score: {{ attempt.score }}% ({{ attempt.marks }})</h3>
+        <a href="{{ url_for('student_dashboard') }}">Back to Dashboard</a>
+    </div>
+
+    <h3>Answer Breakdown</h3>
+    {% for item in details %}
+        <div class="review-box">
+            <p><strong>Q{{ loop.index }}. {{ item.question }}</strong></p>
+            <p>Your Answer: 
+                <span class="{% if item.is_correct %}correct{% else %}incorrect{% endif %}">
+                    {{ item.selected_answer }}
+                </span>
+            </p>
+            {% if not item.is_correct %}
+                <p>Correct Answer: <span class="correct">{{ item.correct_answer }}</span></p>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="{{ url_for('student_dashboard') }}">Back to Dashboard</a>
+    </div>
+</body>
+</html>

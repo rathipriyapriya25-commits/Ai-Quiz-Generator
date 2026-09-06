@@ -1,0 +1,23 @@
+<div id="timer-box" style="position: fixed; top: 20px; right: 20px; background: #ef4444; color: white; padding: 12px 20px; border-radius: 8px; font-weight: bold; font-size: 18px;">
+    ⏱️ Time Left: <span id="timer">{{ quiz.time_limit }}:00</span>
+</div>
+
+<script>
+    let timeLeft = {{ quiz.time_limit }} * 60;
+    const timerElem = document.getElementById('timer');
+    const formElem = document.querySelector('form');
+
+    const countdown = setInterval(() => {
+        let minutes = Math.floor(timeLeft / 60);
+        let seconds = timeLeft % 60;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        timerElem.innerHTML = `${minutes}:${seconds}`;
+
+        if (timeLeft <= 0) {
+            clearInterval(countdown);
+            alert('Time is up! Submitting your quiz automatically.');
+            formElem.submit();
+        }
+        timeLeft--;
+    }, 1000);
+</script>
