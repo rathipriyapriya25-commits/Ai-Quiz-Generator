@@ -6,3 +6,4 @@ gunicorn
 nltk
 pypdf2
 pdfplumber
+pdf2image
